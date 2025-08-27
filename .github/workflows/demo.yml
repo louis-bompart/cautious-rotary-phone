@@ -1,0 +1,26 @@
+name: Demo
+
+on:
+  push:
+
+jobs:
+  run-scripts:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          
+      - name: Run awaited-iife.mjs
+        run: node awaited-iife.mjs || true
+        
+      - name: Run tla.mjs
+        run: node tla.mjs || true
+        
+      - name: Run unawaited-iife.mjs
+        run: node unawaited-iife.mjs || true
